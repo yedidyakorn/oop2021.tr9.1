@@ -1,4 +1,6 @@
 package Nimbus1;
 
-public class Nimbus1PressureSensor {
+import Observables.Sensor;
+
+public class Nimbus1PressureSensor extends Sensor {
 }

@@ -15,7 +15,9 @@ public class AlarmClock
             instance = new AlarmClock();
         return instance;
     }
-
+    void wakeEvery(int alntrval,int pAlamListtener){
+        AlarmClockRecord.add(new SensorAlarmListener(alntrval,pAlamListtener))
+    }
     protected void tic(){
         //TODO: fix
     }
