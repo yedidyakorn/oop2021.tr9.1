@@ -17,7 +17,14 @@ public class AlarmClock
     }
 
     protected void tic(){
-        //TODO: fix
+        for(AlarmClockRecord alarmClockRecord: itsAlarmClockRecords){
+            if (alarmClockRecord.getIntervalDecRement()-CLOCK_INTERVAL_MILLIS<=0){
+                alarmClockRecord.getpAlarmListener().wakeup();
+                alarmClockRecord.setIntervalDecRement(alarmClockRecord.getInterval());
+            }
+            else
+                alarmClockRecord.setIntervalDecRement(alarmClockRecord.getIntervalDecRement()-CLOCK_INTERVAL_MILLIS);
+        }
     }
 
     public void register(int interval, AlarmListener pal) {

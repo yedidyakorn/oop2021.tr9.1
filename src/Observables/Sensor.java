@@ -7,9 +7,9 @@ public abstract class Sensor extends Obserable {
 
     }
 
-    int interval;
+    protected int interval;
     protected int lastRead;
-    String type;
+    protected String type;
 
     public void check() {
         int temp = read();
@@ -21,8 +21,5 @@ public abstract class Sensor extends Obserable {
     }
 
     public abstract int read();
-
-        Nimbus1Clock.instance.register(int,AlarmListener);
-
 
 }

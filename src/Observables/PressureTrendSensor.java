@@ -4,45 +4,44 @@ import Observers.Observer;
 
 public class PressureTrendSensor extends Obserable implements Observer {
 //    private enum Trend {RISING, FALLING ,STABLE}
-    int RISING = 1,FALLING = -1,STABLE = 0;
+    final int RISING = 1,FALLING = -1,STABLE = 0;
     private int lastState;
     private int state;
-    private int lastReading1;
-    private int lastReading2;
-    private int lastReading3;
+    private int lastReading1=0;
+    private int lastReading2=0;
+    private int lastReading3=0;
 
 
 
-    private int calcTrend (int data) {
+    private void calcTrend (int data) {
+        lastReading3=data;
+        lastReading2=lastReading3;
+        lastReading1=lastReading2;
         if (lastReading1 < lastReading2) {
             if (lastReading2 < lastReading3) {
-                lastState = state;
-                return state = RISING;
+                 state = RISING;
             } else {
-                lastState = state;
-                return state = STABLE;
+                 state = STABLE;
             }
         }
         if (lastReading1 > lastReading2) {
             if (lastReading2 > lastReading3) {
-                lastState = state;
-                return state = FALLING;
+                 state = FALLING;
             } else {
-                lastState = state;
-                return state = STABLE;
+                 state = STABLE;
             }
         }
-        return state;
+
     }
-    public void chek(int data){
-     int trend = calcTrend(data);
-     if(trend!=lastState){
-         notifyObservers( trend);
-     }
+    public void check(int data){
+        calcTrend(data);
+        if(state!=lastState)
+            notifyObservers( state);
+        lastState=state;
     }
 
     @Override
     public void update(int data) {
-
+        check(data);
     }
 }
