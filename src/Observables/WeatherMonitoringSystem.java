@@ -7,16 +7,16 @@ import Observers.Observer;
 
 public class WeatherMonitoringSystem {
     public static WeatherMonitoringSystem instance = null;
-    private Observable observable;
     private AlarmClock nimbus1Clock;
     private Nimbus1PressureSensor nimbus1PressureSensor;
     private Nimbus1TemepratureSensor nimbus1TemepratureSensor;
+    private PressureTrendSensor pressureTrendSensor;
     public WeatherMonitoringSystem(){
         System.out.println("WeatherMonitoringSystem was created");
-        observable =new Observable();
         nimbus1Clock=Nimbus1Clock.theInstance();
-        nimbus1TemepratureSensor=new Nimbus1TemepratureSensor("temperature",700);
         nimbus1PressureSensor=new Nimbus1PressureSensor("pressure",1100);
+        nimbus1TemepratureSensor=new Nimbus1TemepratureSensor("temperature",700);
+        pressureTrendSensor=new PressureTrendSensor(nimbus1PressureSensor);
     }
 
     public static WeatherMonitoringSystem theInstance() {
@@ -24,16 +24,18 @@ public class WeatherMonitoringSystem {
             instance = new WeatherMonitoringSystem();
         return instance;
     }
-
+    public void addPressureTrendObservar(Observer observer) {
+        pressureTrendSensor.addObserever(observer);
+        System.out.println(observer.getClass().getName()+ " observes pressure trend");
+    }
     public void addPressureObservar(Observer observer) {
-        observable.addObserever(observer);
+        nimbus1PressureSensor.addObserever(observer);
+        System.out.println(observer.getClass().getName()+ " observes pressure");
     }
     public void addTemperatureObservar(Observer observer) {
-        observable.addObserever(observer);
-    }
-    public void addPressureTrendObservar(Observer observer) {
-        observable.addObserever(observer);
-    }
+        nimbus1TemepratureSensor.addObserever(observer);
+        System.out.println(observer.getClass().getName()+ " observes temperature");    }
+
 
 
 

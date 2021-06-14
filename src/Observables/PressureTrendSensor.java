@@ -1,5 +1,7 @@
 package Observables;
 
+import Nimbus1.Nimbus1PressureSensor;
+import Nimbus1.Nimbus1TemepratureSensor;
 import Observers.Observer;
 
 public class PressureTrendSensor extends Observable implements Observer {
@@ -10,11 +12,16 @@ public class PressureTrendSensor extends Observable implements Observer {
     private int lastReading2=0;
     private int lastReading3=0;
 
+    public PressureTrendSensor(Nimbus1PressureSensor observer){
+        observer.addObserever(this);
+        System.out.println("PressureTrendSensor observes pressure");
+    }
+
 
     private void calcTrend (int data) {
-        lastReading3=data;
-        lastReading2=lastReading3;
         lastReading1=lastReading2;
+        lastReading2=lastReading3;
+        lastReading3=data;
         if (lastReading1 < lastReading2) {
             if (lastReading2 < lastReading3) {
                  state = RISING;
@@ -34,7 +41,7 @@ public class PressureTrendSensor extends Observable implements Observer {
     public void check(int data){
         calcTrend(data);
         if(state!=lastState)
-            notifyObservers( state);
+            notifyObservers(state);
         lastState=state;
     }
 

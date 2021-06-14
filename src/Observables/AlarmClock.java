@@ -6,7 +6,7 @@ public class AlarmClock
 {
     public final int CLOCK_INTERVAL_MILLIS = 100;
     public static AlarmClock instance = null;
-    private ArrayList<AlarmClockRecord> itsAlarmClockRecords = new ArrayList();
+    private ArrayList<AlarmClockRecord> itsAlarmClockRecords = new ArrayList<>();
 
     protected AlarmClock() {}
     public static AlarmClock theInstance()
@@ -30,7 +30,7 @@ public class AlarmClock
     public void register(int interval, AlarmListener pal) {
         itsAlarmClockRecords.add(new AlarmClockRecord(interval,pal));
         System.out.println(pal.getSensorName()+" registered to clock");
-        ;
+
     }
 }
 
