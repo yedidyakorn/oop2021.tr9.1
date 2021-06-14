@@ -1,15 +1,14 @@
 package Observables;
 
-import Nimbus1.Nimbus1Clock;
+public abstract class Sensor extends Observable {
+    protected int interval;
+    protected int lastRead;
+    protected String type;
 
-public abstract class Sensor extends Obserable {
     public Sensor() {
 
     }
 
-    protected int interval;
-    protected int lastRead;
-    protected String type;
 
     public void check() {
         int temp = read();

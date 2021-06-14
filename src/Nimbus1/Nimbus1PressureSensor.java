@@ -8,6 +8,7 @@ import java.util.Random;
 
 public class Nimbus1PressureSensor extends Sensor {
 
+
    Random rand=RandomSupplier.getRnd();
 
    public Nimbus1PressureSensor(String type, int interval){

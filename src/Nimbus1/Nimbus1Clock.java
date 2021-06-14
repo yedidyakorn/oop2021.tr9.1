@@ -4,6 +4,7 @@ import Observables.AlarmClock;
 
 public class Nimbus1Clock extends AlarmClock
 {
+    private static Nimbus1Clock instance=null;
     protected Nimbus1Clock()
     {
         new Thread("polling Alarm Clock Records")

@@ -10,4 +10,9 @@ public class SensorAlarmListener implements AlarmListener {
     public void wakeup() {
         sensor.check();
     }
+
+    @Override
+    public String getSensorName(){
+        return sensor.type;
+    }
 }

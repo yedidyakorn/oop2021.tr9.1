@@ -11,7 +11,8 @@ public class MainClassWS1
         WeatherMonitoringSystem ws = WeatherMonitoringSystem.theInstance();
 
         MonitoringScreen p_MonitorScreen = new MonitoringScreen(ws);
+
         Log p_log = new Log(ws);
-        
+
     }
 }

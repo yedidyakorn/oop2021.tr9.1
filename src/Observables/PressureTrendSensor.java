@@ -2,8 +2,7 @@ package Observables;
 
 import Observers.Observer;
 
-public class PressureTrendSensor extends Obserable implements Observer {
-//    private enum Trend {RISING, FALLING ,STABLE}
+public class PressureTrendSensor extends Observable implements Observer {
     final int RISING = 1,FALLING = -1,STABLE = 0;
     private int lastState=0;
     private int state=0;
@@ -11,8 +10,6 @@ public class PressureTrendSensor extends Obserable implements Observer {
     private int lastReading2=0;
     private int lastReading3=0;
 
-
-    public PressureTrendSensor()
 
     private void calcTrend (int data) {
         lastReading3=data;

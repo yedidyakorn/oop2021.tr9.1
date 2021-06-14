@@ -6,6 +6,8 @@ public class Log {
     WeatherMonitoringSystem ws;
     public Log(WeatherMonitoringSystem ws) {
         this.ws=ws;
+        ws.addPressureObservar(new LogPressObserver(this));
+        ws.addPressureTrendObservar(new LogPressTrendObserver(this));
     }
     public void displayPressure(int data){
         System.out.println("Log: pressure = "+data+ "millibars");
