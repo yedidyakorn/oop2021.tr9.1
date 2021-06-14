@@ -3,8 +3,9 @@ package Observers;
 import Observables.WeatherMonitoringSystem;
 
 public class Log {
+    WeatherMonitoringSystem ws;
     public Log(WeatherMonitoringSystem ws) {
-
+        this.ws=ws;
     }
     public void displayPressure(int data){
         System.out.println("Log: pressure = "+data+ "millibars");

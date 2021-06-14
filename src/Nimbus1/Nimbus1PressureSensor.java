@@ -10,8 +10,8 @@ public class Nimbus1PressureSensor extends Sensor {
 
    Random rand=RandomSupplier.getRnd();
 
-   public Nimbus1PressureSensor(String type, int inteval){
-       this.interval=inteval;
+   public Nimbus1PressureSensor(String type, int interval){
+       this.interval=interval;
        this.type=type;
        Nimbus1Clock.theInstance().register(interval,new SensorAlarmListener(this));
    }
